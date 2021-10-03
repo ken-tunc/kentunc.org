@@ -1,16 +1,24 @@
-import { ExternalLink } from '@/data/links';
 import React from 'react';
-import { Grid, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+
+import {
+  Grid,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
+
 import Link from '@/components/Link';
+import { ExternalLink } from '@/data/links';
 
 interface ExternalLinkListProps {
-  links: ExternalLink[]
+  links: ExternalLink[];
 }
 
 const ExternalLinkList: React.VFC<ExternalLinkListProps> = (props) => {
   return (
     <Grid container>
-      {props.links.map(link => {
+      {props.links.map((link) => {
         const LinkIcon = link.icon;
         return (
           <Grid item xs={6} key={link.label}>
@@ -26,7 +34,7 @@ const ExternalLinkList: React.VFC<ExternalLinkListProps> = (props) => {
         );
       })}
     </Grid>
-  )
-}
+  );
+};
 
 export default ExternalLinkList;

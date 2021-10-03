@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Typography from '@mui/material/Typography';
 
 const Brand: React.VFC = () => {
@@ -11,7 +12,7 @@ const Brand: React.VFC = () => {
         A software engineer.
       </Typography>
     </>
-  )
-}
+  );
+};
 
-export default Brand
+export default Brand;
