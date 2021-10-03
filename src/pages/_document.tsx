@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
+import theme from '@/styles/theme';
+import createEmotionCache from '@/utils/createEmotionCache';
 
-export default class MyDocument extends Document {
+export default class WebsiteDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+WebsiteDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
