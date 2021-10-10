@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 
 import { Career } from '@/data/careers';
 
-export interface CareerHistoryProps {
+export type CareerHistoryProps = {
   careers: Career[];
-}
+};
 
 const CareerHistory: React.VFC<CareerHistoryProps> = (props) => {
   const activeStep = props.careers.length - 1;

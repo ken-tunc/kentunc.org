@@ -8,24 +8,30 @@ import {
   ListItemText,
 } from '@mui/material';
 
+import FontAwesomeIcon from '@/components/FontAwesomeIcon';
 import Link from '@/components/Link';
 import { ExternalLink } from '@/data/links';
+import useFontawesome from '@/hooks/useFontawesome';
 
-interface ExternalLinkListProps {
+type ExternalLinkListProps = {
   links: ExternalLink[];
-}
+};
 
 const ExternalLinkList: React.VFC<ExternalLinkListProps> = (props) => {
+  useFontawesome();
+
   return (
     <Grid container>
       {props.links.map((link) => {
-        const LinkIcon = link.icon;
         return (
           <Grid item xs={6} key={link.label}>
             <ListItem disablePadding>
               <ListItemButton component={Link} href={link.url}>
                 <ListItemIcon>
-                  <LinkIcon />
+                  <FontAwesomeIcon
+                    stylePrefix={link.stylePrefix}
+                    iconName={link.iconName}
+                  />
                 </ListItemIcon>
                 <ListItemText primary={link.label} />
               </ListItemButton>

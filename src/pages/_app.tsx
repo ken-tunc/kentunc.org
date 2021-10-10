@@ -12,9 +12,9 @@ import createEmotionCache from '@/utils/createEmotionCache';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-interface WebsiteProps extends AppProps {
+type WebsiteProps = AppProps & {
   emotionCache?: EmotionCache;
-}
+};
 
 export default function Website(props: WebsiteProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

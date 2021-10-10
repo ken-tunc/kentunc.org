@@ -1,9 +1,9 @@
-export interface Career {
+export type Career = {
   label: string;
   description: string;
   since: Date;
   until?: Date;
-}
+};
 
 export const careers: Career[] = [
   {
