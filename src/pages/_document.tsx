@@ -1,9 +1,8 @@
 import React from 'react';
 
 import createEmotionServer from '@emotion/server/create-instance';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import theme from '@/styles/theme';
 import createEmotionCache from '@/utils/createEmotionCache';
 
 export default class WebsiteDocument extends Document {
@@ -12,7 +11,7 @@ export default class WebsiteDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          {/*<meta name="theme-color" content={theme.palette.primary.main} />*/}
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
