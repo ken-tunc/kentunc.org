@@ -13,9 +13,9 @@ import Link from '@/components/Link';
 import { ExternalLink } from '@/data/links';
 import useFontawesome from '@/hooks/useFontawesome';
 
-interface ExternalLinkListProps {
+type ExternalLinkListProps = {
   links: ExternalLink[];
-}
+};
 
 const ExternalLinkList: React.VFC<ExternalLinkListProps> = (props) => {
   useFontawesome();
