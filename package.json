@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
+    "serve": "serve ./out",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
@@ -36,6 +37,7 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "2.4.1",
+    "serve": "^12.0.1",
     "typescript": "latest"
   },
   "lint-staged": {
