@@ -23,5 +23,11 @@ export const careers: Career[] = [
     label: 'Yahoo! JAPAN',
     description: 'Software Engineer',
     since: new Date(2019, 3),
+    until: new Date(2022, 3),
+  },
+  {
+    label: 'M3, Inc.',
+    description: 'Software Engineer',
+    since: new Date(2022, 4),
   },
 ];
