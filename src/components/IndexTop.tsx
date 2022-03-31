@@ -25,7 +25,6 @@ const IndexTop: React.VFC = () => {
           justifyContent: 'end',
         }}
       >
-        toggle mode
         <ColorModeToggleButton />
       </Box>
     </Box>

@@ -38,11 +38,19 @@ const CareerHistory: React.VFC<CareerHistoryProps> = (props) => {
 };
 
 const CareerLabelOption: React.VFC<Omit<Career, 'label'>> = (props) => {
+  const formatDate: (date?: Date) => string = (date) => {
+    if (date == null) {
+      return '';
+    }
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    return `${date.getFullYear()}/${month}`;
+  };
+
   return (
     <Typography variant="caption">
       {props.description}
       <br />
-      {props.since.getFullYear()} ~ {props.until?.getFullYear()}
+      {formatDate(props.since)} ~ {formatDate(props.until)}
     </Typography>
   );
 };
