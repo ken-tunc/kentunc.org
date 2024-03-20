@@ -1,25 +1,23 @@
-import React from 'react';
+import { Divider, Typography } from "@mui/material";
+import { PropsWithChildren } from "react";
 
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-
-type DividedSectionProps = {
+type Props = {
   title?: string;
-  children: React.ReactNode;
 };
 
-const DividedSection: React.FC<DividedSectionProps> = (props) => {
+export const DividedSection: React.FC<PropsWithChildren<Props>> = ({
+  title,
+  children,
+}) => {
   return (
     <section>
-      {props.title ? (
-        <Typography variant="h5" component="h2" sx={{ mb: 1 }}>
-          {props.title}
+      {title && (
+        <Typography variant="h5" component="h2" mb={1}>
+          {title}
         </Typography>
-      ) : null}
-      {props.children}
+      )}
+      {children}
       <Divider sx={{ my: 2 }} />
     </section>
   );
 };
-
-export default DividedSection;
