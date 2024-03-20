@@ -13,7 +13,7 @@ import { Profile } from "./components/Profile";
 
 function App() {
   return (
-    <CssVarsProvider defaultMode="system">
+    <CssVarsProvider defaultMode="dark">
       <CssBaseline />
       <Container maxWidth="sm">
         <Box my={4}>
