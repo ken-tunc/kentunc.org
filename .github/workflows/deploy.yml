@@ -1,42 +1,55 @@
-name: deploy to github pages
+# based on https://vitejs.dev/guide/static-deploy
+
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches: [main]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
-  build-deploy:
-    # The type of runner that the job will run on
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.x'
-
-      - name: Install packages
-        run: yarn --frozen-lockfile
-
-      - name: Build Next App
-        run: yarn build
-
-      - name: Export Next App
-        run: yarn export
-
-      - name: Add nojekyll file
-        run: touch ./out/.nojekyll
-
-      - name: Deploy Next App
-        uses: peaceiris/actions-gh-pages@v3
+          node-version-file: '.tool-versions'
+      - uses: pnpm/action-setup@v3
+        name: Install dependencies
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          cname: 'kentunc.org'
+          version: 8
+          run_install: true
+      - name: Build
+        run: pnpm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload dist folder
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
