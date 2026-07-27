@@ -1,4 +1,4 @@
-# based on https://vitejs.dev/guide/static-deploy
+# based on https://viteplus.dev/guide/ci
 
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
@@ -32,17 +32,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      # Replaces setup-node + pnpm/action-setup: `vp` manages the Node.js
+      # runtime, the package manager, and the dependency cache.
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
         with:
           node-version-file: '.tool-versions'
-      - uses: pnpm/action-setup@v3
-        name: Install dependencies
-        with:
-          version: 8
-          run_install: true
+          cache: true
+      - name: Check
+        run: vp check
+      - name: Test
+        run: vp test
       - name: Build
-        run: pnpm run build
+        run: vp build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

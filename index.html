@@ -1,12 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>kentunc.org</title>
+    <meta
+      name="description"
+      content="Kensuke Taguchi — a software engineer. Profile, career and links."
+    />
+    <meta name="theme-color" content="#111318" />
+    <link rel="canonical" href="https://kentunc.org/" />
+    <script>
+      // Apply the stored color mode before the first paint so switching to
+      // light mode does not flash dark. Keep in sync with src/lib/color-mode.ts.
+      try {
+        var stored = localStorage.getItem('color-mode');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.dataset.theme = stored;
+        }
+      } catch (error) {
+        // Storage is unavailable; fall back to the default dark mode.
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <app-root></app-root>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
