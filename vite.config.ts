@@ -1,10 +1,27 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import { defineConfig } from 'vite-plus';
 
-// https://vitejs.dev/config/
+// https://viteplus.dev/config/
 export default defineConfig({
-  plugins: [react()],
   server: {
     open: true,
+  },
+  build: {
+    target: 'es2022',
+  },
+  lint: {
+    ignorePatterns: ['dist/**'],
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+  },
+  fmt: {
+    ignorePatterns: ['dist/**'],
+    singleQuote: true,
+  },
+  test: {
+    environment: 'jsdom',
+    include: ['src/**/*.test.ts'],
+    setupFiles: ['src/test-setup.ts'],
   },
 });
