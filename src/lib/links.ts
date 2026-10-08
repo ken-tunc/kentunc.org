@@ -36,6 +36,6 @@ export const externalLinks: readonly ExternalLink[] = [
 ];
 
 /** `mailto:` must open in the same tab; web links open in a new one. */
-export function linkTarget(link: ExternalLink): '_blank' | '' {
-  return link.url.startsWith('mailto:') ? '' : '_blank';
+export function linkTarget(link: ExternalLink): '_blank' | undefined {
+  return link.url.startsWith('mailto:') ? undefined : '_blank';
 }

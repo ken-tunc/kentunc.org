@@ -21,7 +21,7 @@ export function Careers() {
                 class={`block size-3 rounded-full ${current ? 'bg-primary' : 'bg-base-content/40'}`}
               />
             </div>
-            <div class="timeline-end mb-6">
+            <div class={`timeline-end ${index < careers.length - 1 ? 'mb-6' : ''}`}>
               <p class="font-medium">{career.label}</p>
               <p class="text-sm text-base-content/70">{career.description}</p>
               <p class="mt-1 text-xs text-base-content/60">{formatPeriod(career)}</p>

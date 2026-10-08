@@ -25,7 +25,7 @@ describe('linkTarget', () => {
           throw new Error('unused');
         },
       }),
-    ).toBe('');
+    ).toBeUndefined();
   });
 });
 

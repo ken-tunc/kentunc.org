@@ -9,7 +9,7 @@ export function Links() {
           <li key={link.label}>
             <a
               href={link.url}
-              target={target || undefined}
+              target={target}
               rel={target ? 'noopener noreferrer' : undefined}
               class="gap-4 py-3"
             >
