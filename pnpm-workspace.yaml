@@ -1,0 +1,12 @@
+# Make plugins that peer-depend on `vite` (Preact, Tailwind CSS) share the
+# Vite+ copy instead of installing a separate one. Bump both alongside
+# vite-plus; see https://viteplus.dev/guide/migrate
+overrides:
+  vite@*: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vitest@*: 5.0.3
+
+# The alias above reports the Vite+ version (1.x), which those plugins' `vite`
+# peer ranges do not recognise even though it is Vite 8 underneath.
+peerDependencyRules:
+  allowAny:
+    - vite

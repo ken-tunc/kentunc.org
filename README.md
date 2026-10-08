@@ -1,8 +1,11 @@
 # kentunc.org
 
-Personal site. Built with [Lit](https://lit.dev/) and
-[Material Web](https://github.com/material-components/material-web) (Material 3)
-on the [Vite+](https://viteplus.dev/) toolchain, deployed to GitHub Pages.
+Personal site. Built with [Preact](https://preactjs.com/) and
+[daisyUI](https://daisyui.com/) on [Tailwind CSS](https://tailwindcss.com/) and
+the [Vite+](https://viteplus.dev/) toolchain, deployed to GitHub Pages.
+
+The page is prerendered to static HTML at build time; the client only hydrates
+it to run the theme toggle.
 
 ## Setup
 
@@ -25,23 +28,24 @@ vp install
 | `vp preview` | Serve the production build  |
 
 `vp check --fix` formats and applies autofixes. All tool configuration lives in
-`vite.config.ts`.
+`vite.config.ts`. `pnpm-workspace.yaml` points `vite` at the Vite+ core so the
+Preact and Tailwind plugins share it; bump it alongside `vite-plus`.
 
 ## Layout
 
 ```
 src/
-  components/   Lit custom elements (<app-root> and its children)
+  components/   Preact components (<App> and its children)
   lib/          Data and logic, unit tested alongside the source
-  styles/       Material 3 color tokens and page-level CSS
+  styles/       Tailwind CSS and daisyUI setup
 ```
 
 ### Theming
 
-`src/styles/theme.css` holds the Material 3 `--md-sys-color-*` tokens for both
-modes. They were generated with `@material/material-color-utilities`
-(`SchemeTonalSpot`, seed `#1976D2`) rather than hand-picked, so regenerate them
-from the same seed if the palette ever needs to change.
+The page uses daisyUI's built-in `dim` (dark) and `nord` (light) themes,
+configured in `src/styles/main.css`. To switch themes, change them there, in
+`THEME`/`THEME_COLOR` in `src/lib/color-mode.ts`, and in the inline script in
+`index.html`.
 
 Dark is the default. The chosen mode is stored in `localStorage` and applied by
 an inline script in `index.html` before the first paint.

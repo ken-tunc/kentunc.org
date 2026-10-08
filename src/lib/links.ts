@@ -1,12 +1,11 @@
-import { facebookIcon, githubIcon, mailIcon, xIcon } from './icons.ts';
-import type { TemplateResult } from 'lit';
+import { type Icon, facebookIcon, githubIcon, mailIcon, xIcon } from './icons.tsx';
 
 export type ExternalLink = {
   label: string;
   /** Shown under the label; also what the link resolves to. */
   handle: string;
   url: string;
-  icon: () => TemplateResult;
+  icon: Icon;
 };
 
 export const externalLinks: readonly ExternalLink[] = [
@@ -37,6 +36,6 @@ export const externalLinks: readonly ExternalLink[] = [
 ];
 
 /** `mailto:` must open in the same tab; web links open in a new one. */
-export function linkTarget(link: ExternalLink): '_blank' | '' {
-  return link.url.startsWith('mailto:') ? '' : '_blank';
+export function linkTarget(link: ExternalLink): '_blank' | undefined {
+  return link.url.startsWith('mailto:') ? undefined : '_blank';
 }
