@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vite-plus/test';
 import {
   DEFAULT_COLOR_MODE,
   STORAGE_KEY,
+  THEME,
   applyColorMode,
   isColorMode,
   otherColorMode,
@@ -52,9 +53,9 @@ describe('readColorMode', () => {
 });
 
 describe('applyColorMode', () => {
-  it('sets data-theme on the document element', () => {
+  it('sets the daisyUI theme on the document element', () => {
     applyColorMode('light');
-    expect(document.documentElement.dataset['theme']).toBe('light');
+    expect(document.documentElement.dataset['theme']).toBe(THEME.light);
   });
 
   it('keeps the theme-color meta tag in sync', () => {
@@ -64,10 +65,10 @@ describe('applyColorMode', () => {
     document.head.append(meta);
 
     applyColorMode('light');
-    expect(meta.content).toBe('#f9f9ff');
+    expect(meta.content).toBe('#eceff4');
 
     applyColorMode('dark');
-    expect(meta.content).toBe('#111318');
+    expect(meta.content).toBe('#2a303c');
   });
 
   it('does not persist the mode', () => {
@@ -79,7 +80,7 @@ describe('applyColorMode', () => {
 describe('setColorMode', () => {
   it('applies and persists the mode', () => {
     setColorMode('light');
-    expect(document.documentElement.dataset['theme']).toBe('light');
+    expect(document.documentElement.dataset['theme']).toBe(THEME.light);
     expect(localStorage.getItem(STORAGE_KEY)).toBe('light');
     expect(readColorMode()).toBe('light');
   });

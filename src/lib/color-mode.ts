@@ -6,10 +6,16 @@ export const DEFAULT_COLOR_MODE: ColorMode = 'dark';
 /** Keep in sync with the inline bootstrap script in index.html. */
 export const STORAGE_KEY = 'color-mode';
 
-/** `--md-sys-color-background` of each mode, mirrored into `<meta name="theme-color">`. */
+/** The daisyUI theme behind each mode. Keep in sync with src/styles/main.css. */
+export const THEME: Record<ColorMode, string> = {
+  dark: 'dim',
+  light: 'nord',
+};
+
+/** `--color-base-100` of each theme, mirrored into `<meta name="theme-color">`. */
 const THEME_COLOR: Record<ColorMode, string> = {
-  dark: '#111318',
-  light: '#f9f9ff',
+  dark: '#2a303c',
+  light: '#eceff4',
 };
 
 export function isColorMode(value: unknown): value is ColorMode {
@@ -36,7 +42,7 @@ export function readColorMode(): ColorMode {
 
 /** Applies the mode to the document without persisting it. */
 export function applyColorMode(mode: ColorMode): void {
-  document.documentElement.dataset['theme'] = mode;
+  document.documentElement.dataset['theme'] = THEME[mode];
 
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {

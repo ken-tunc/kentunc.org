@@ -13,10 +13,9 @@
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
-    /* Lit relies on TypeScript's experimental decorators, which need class
-       fields to keep their assignment (rather than define) semantics. */
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
+    /* Preact JSX */
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
 
     /* Linting */
     "strict": true,

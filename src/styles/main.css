@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+/*
+ * daisyUI built-in themes: `dim` (dark, the default) and `nord` (light).
+ * src/lib/color-mode.ts switches between them via `data-theme` on <html>.
+ */
+@plugin 'daisyui' {
+  themes:
+    dim --default,
+    nord;
+  /* Only ship the components the page uses. */
+  include:
+    properties, rootcolor, rootscrolllock, rootscrollgutter, scrollbar, svg, button, divider, link,
+    menu, timeline;
+}
+
+/* Styles that only apply while the light theme is active. */
+@custom-variant light (&:where([data-theme='nord'], [data-theme='nord'] *));
